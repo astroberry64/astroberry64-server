@@ -1,8 +1,13 @@
-# Astroberry Server
-Astroberry Server is a ready to use system for Raspberry Pi for controlling all your astronomy equipment.
+# Astroberry64 Server
+
+> **Note**: This is a 64-bit fork of [Radek Kaczorek's Astroberry Server](https://github.com/astroberry64/astroberry64-server) for Raspberry Pi 4/5 running 64-bit Raspberry Pi OS (Bookworm).
+
+**Credits:** This project is based on the excellent work by Radek Kaczorek. We hope Radek will join the Astroberry64 team to continue this work together!
+
+Astroberry64 Server is a ready to use system for Raspberry Pi 4/5 (64-bit) for controlling all your astronomy equipment.
 It handles all astronomy equipment supported by INDI server.
 
-Visit [www.astroberry.io](https://www.astroberry.io) for details and system image.
+Visit [github.com/astroberry64](https://github.com/astroberry64) for details and system image.
 
 Visit [Facebook profile](https://www.facebook.com/astroberryserver) to meet other users.
 
@@ -10,11 +15,11 @@ Visit [YouTube channel](https://www.youtube.com/channel/UCQfeJZsRZQrm7O1Gl8yAt5A
 
 Visit [INDI forum](https://indilib.org/forum/astroberry.html) to share your experience.
 
-![alt img2](https://raw.githubusercontent.com/rkaczorek/astroberry-server/master/files/sneakpreview.jpg)
+![alt img2](https://raw.githubusercontent.com/astroberry64/astroberry64-server/main/files/sneakpreview.jpg)
 
 
 The system features:
-- Support for Raspberry Pi 3 and 4, Pi Zero and... probably any other Raspberry Pi version released so far
+- Support for Raspberry Pi 4 and 5 (64-bit), Pi Zero and... probably any other Raspberry Pi version released so far
 - Raspberry Pi OS Desktop
 - APT repository for Raspberry Pi OS (yes, now any Raspberry Pi OS user can install Astroberry Server with 'apt install')
 - Web interface featuring GPS Panel and Astro Panel (celestial almanac for your localization)
@@ -42,14 +47,14 @@ The system features:
 # How to start?
 Starting from version 2.0.0 you can install Astroberry Server using two modes:
 
-Download the image file from https://www.astroberry.io/distro/
+Download the image file from https://github.com/astroberry64/distro/
 
-Verify SHA256 checksums of downloaded image in [SHA256SUMS](https://github.com/rkaczorek/astroberry-server/blob/master/SHA256SUMS) to ensure that it is authentic and not corrupted.
+Verify SHA256 checksums of downloaded image in [SHA256SUMS](https://github.com/astroberry64/astroberry64-server/blob/main/SHA256SUMS) to ensure that it is authentic and not corrupted.
 
 Unpack the image file and flash your microSD card (minimum 16GB required) using [etcher.io](https://etcher.io/) or running the below commands in your terminal:
 ```
-unzip astroberry-server_2.0.4.img.zip
-sudo dd if=astroberry-server_2.0.4.img of=/dev/sdX bs=8M status=progress
+unzip astroberry64-server_2.0.4.img.zip
+sudo dd if=astroberry64-server_2.0.4.img of=/dev/sdX bs=8M status=progress
 ```
 Note 1: **Replace sdX with your microSD card identifier**. Make sure it is correct before running the above command!
 
@@ -60,11 +65,11 @@ OR
 Download official [Raspberry Pi OS with desktop](https://www.raspberrypi.org/downloads/raspberry-pi-os/) image and flash your microSD card with it.
 After the first boot, connect your Raspberry Pi to a screen, setup your system with the first boot wizard and run the following commands in your terminal:
 ```
-wget -O - https://www.astroberry.io/repo/key | sudo apt-key add -
-sudo su -c "echo 'deb https://www.astroberry.io/repo/ buster main' > /etc/apt/sources.list.d/astroberry.list"
+wget -O - https://astroberry64.github.io/repo/key | sudo apt-key add -
+sudo su -c "echo 'deb https://astroberry64.github.io/repo/ buster main' > /etc/apt/sources.list.d/astroberry.list"
 sudo apt update
 sudo apt upgrade
-sudo apt install astroberry-server-full 
+sudo apt install astroberry64-server-full 
 ```
 Note: You should not run this procedure over network (i.e. ssh) as the network connection will be reset during installation procedure.
 
@@ -94,10 +99,10 @@ There is no need to reflash your microSD card with the latest image file to upgr
 # How to reconfigure it?
 You can use it as any Raspberry Pi OS system, however there are some mission critical packages installed for you. Don't uninstall them if you want to
 keep your Astroberry Server in good shape. These are:
-- astroberry-server-full
-- astroberry-server-sysmod
-- astroberry-server-wui
-- astroberry-server-artwork
+- astroberry64-server-full
+- astroberry64-server-sysmod
+- astroberry64-server-wui
+- astroberry64-server-artwork
 
 # What is default username and password?
 It's (almost) always **astroberry**:
@@ -120,17 +125,17 @@ sudo systemctl restart nginx.service
 # Where is the source code of the system?
 The core of the system is based on [Raspberry Pi OS with desktop](https://www.raspberrypi.org/downloads/raspberry-pi-os/) and is maintained by Raspberry Foundation. The core is is enriched with bunch of tools and configurationscoming from the following subprojects:
 
-- [astroberry-server-wui](https://github.com/rkaczorek/astroberry-server-wui)
-- [astroberry-server-artwork](https://github.com/rkaczorek/astroberry-server-artwork)
-- [astroberry-server-sysmod](https://github.com/rkaczorek/astroberry-server-sysmod)
-- [astroberry-server-wiz](https://github.com/rkaczorek/astroberry-server-wiz)
-- [astroberry-server-hotspot](https://github.com/rkaczorek/astroberry-server-hotspot)
-- [astroberry-server-full](https://github.com/rkaczorek/astroberry-server-full)
+- [astroberry64-server-wui](https://github.com/astroberry64/astroberry64-server-wui)
+- [astroberry64-server-artwork](https://github.com/astroberry64/astroberry64-server-artwork)
+- [astroberry64-server-sysmod](https://github.com/astroberry64/astroberry64-server-sysmod)
+- [astroberry64-server-wiz](https://github.com/astroberry64/astroberry64-server-wiz)
+- [astroberry64-server-hotspot](https://github.com/astroberry64/astroberry64-server-hotspot)
+- [astroberry64-server-full](https://github.com/astroberry64/astroberry64-server-full)
 
 Plus it is enhanced by these projects:
-- [astroberry-diy](https://github.com/rkaczorek/astroberry-diy)
-- [astroberry-amh](https://github.com/rkaczorek/astroberry-amh)
-- [astroberry-piface](https://github.com/rkaczorek/astroberry-piface)
+- [astroberry64-diy](https://github.com/astroberry64/astroberry64-diy)
+- [astroberry64-amh](https://github.com/astroberry64/astroberry64-amh)
+- [astroberry64-piface](https://github.com/astroberry64/astroberry64-piface)
 - [virtualgps](https://github.com/rkaczorek/virtualgps)
 - [gpspanel](https://github.com/rkaczorek/gpspanel)
 - [astropanel](https://github.com/rkaczorek/astropanel)
@@ -177,5 +182,5 @@ A: The panels use GPS readings for your location. If you don't have GPS the pane
 A: Pi user account is disabled for security reasons. You can reenable it anytime by running: sudo passwd -u pi
 
 # Issues
-File any issues on https://github.com/rkaczorek/astroberry-server
+File any issues on https://github.com/astroberry64/astroberry64-server
 
